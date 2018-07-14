@@ -1,12 +1,12 @@
-$("#createBurger").on("click", function(event){
+$("#inputBurger").on("click", function(event){
     event.preventDefault();
     var newBurger = {
-        burger_name: $("#burgerName").val().trim()
+        burger_name: $("#inputBurger").val().trim()
     };
 
 //Send the POST request
 
-$.ajax('/api.burgers',{
+$.ajax('./api.burgers',{
     type: "POST", 
     data: newBurger
 }).then(

@@ -33,6 +33,7 @@ router.post("/burgers/insertOne", function (req, res) {
 // to change from 'ready to eat' to devoured
 router.put("/burgers/updateOne/:id", function (req, res) {
   var condition = "id = " + req.params.id;
+  
   burger.updateOne({
     devoured: true
   }, condition, function () {

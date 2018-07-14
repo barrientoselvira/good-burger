@@ -41,19 +41,19 @@ function printQuestionMarks(num) {
         cb(result);
       });
   },
-    insertOne: function(table, cols, vals, cb) {
+    insertOne: function(table, cols, tableInput, cb) {
       var queryString = "INSERT INTO " + table;
   
       queryString += " (";
       queryString += cols.toString();
       queryString += ") ";
       queryString += "VALUES (";
-      queryString += vals;
+      queryString += printQuestionMarks(vals.length);
       queryString += ") ";
   
       console.log(queryString);
   
-      connection.query(queryString, vals, function(err, result) {
+      connection.query(queryString, [burgerInput], function(err, result) {
         if (err) {
           throw err;
         }
