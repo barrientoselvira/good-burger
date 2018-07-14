@@ -1,0 +1,40 @@
+<h1> Welcome to Good Burger, home of the Good Burger, can I take your order?</h1>
+
+<main>
+  <div class="container">
+    <div class="burger-before">
+      <div class="col s6">
+
+<h2>Enter the name of the burger you'd like to eat!</h2>
+<div class="submit-row">
+  <div class="col s12">
+    <form action="/burgers/insertOne/"{{this.burger_name}}?_method=POST" method="POST">
+      <label for="burgerInput" id= "burgerInput">Burger:</label>
+      <input type="text" name="burger_name" >
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+	
+<h3>Eat us!!</h3>
+  {{#each burgers}}
+      {{#unless this.devoured}}
+      <form action="burgers/updateOne/{{this.id}}?_method=PUT" method="POST">
+      <input type="hidden" name="devoured" value="true">
+      <button type="submit">Chomp Chomp</button>
+      </form>
+        {{this.id}}{{this.burger_name}} 
+      {{/unless}}
+  {{/each}}
+
+
+<h3>Living in stomach. AKA Someone already ate us.</h3>
+{{!burgers devoured}}
+{{#each burgers}}
+  {{#if this.devoured}}
+  <p>
+     {{this.id}} {{this.burger_name}}
+     </p>
+  {{/if}}
+{{/each}}
+
